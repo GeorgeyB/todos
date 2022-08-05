@@ -40,3 +40,6 @@ Thumbs.db
 
 # Secrets
 .env
+
+# Data
+prisma/*.db

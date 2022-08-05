@@ -1,10 +1,12 @@
 import { useMutation } from '@apollo/client';
 import React, { KeyboardEventHandler, useState } from 'react';
-import { CREATE_TO_DO } from '../../gql/ToDos';
+import { CREATE_TO_DO, GET_TO_DOS } from '../../gql/ToDos';
 
 function ToDoNew() {
   const [inputValue, setInputValue] = useState('');
-  const [createToDo] = useMutation(CREATE_TO_DO, { refetchQueries: 'active' });
+  const [createToDo] = useMutation(CREATE_TO_DO, {
+    refetchQueries: [GET_TO_DOS],
+  });
 
   const onKeyDown: KeyboardEventHandler = async (e) => {
     if (e.key !== 'Enter') {

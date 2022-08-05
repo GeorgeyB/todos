@@ -10,6 +10,14 @@ export const GET_TO_DOS = gql`
   }
 `;
 
+export const CREATE_TO_DO = gql`
+  mutation CreateToDo($body: String!) {
+    createToDo(body: $body) {
+      body
+    }
+  }
+`;
+
 export const UPDATE_TO_DO = gql`
   mutation UpdateToDo($id: Int!, $body: String!) {
     updateToDo(id: $id, body: $body) {

@@ -14,6 +14,7 @@ const typeDefs = `
   }
 
   type Mutation{
+    createToDo(body: String!): ToDo!
     updateToDo(id: Int! body: String!): ToDo!
     markToDoDone(id: Int!): ToDo!
     markToDoUndone(id: Int!): ToDo!
@@ -26,6 +27,7 @@ const resolvers = {
     toDos: () => prisma.toDo.findMany(),
   },
   Mutation: {
+    createToDo: (_, { body }) => prisma.toDo.create({ data: { body } }),
     updateToDo: (_, { id, body }) =>
       prisma.toDo.update({
         where: { id },
